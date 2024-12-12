@@ -1,0 +1,37 @@
+<p class="text-green-500 mb-4"><%= notice %></p>
+
+<% content_for :title, t('uploaded_images.title') %>
+
+<h1 class="text-4xl font-bold text-center mb-8"><%= t('uploaded_images.title') %></h1>
+
+<!-- Grid Layout for the images -->
+<div id="uploaded_images" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4">
+  <% @uploaded_images.each do |uploaded_image| %>
+    <% if uploaded_image.persisted? && uploaded_image.image.attached? %>
+      <div class="border rounded-lg p-4 shadow-lg bg-white">
+        <!-- Display the uploaded image inside the card -->
+        <div class="w-full h-48 mb-4 flex justify-center items-center">
+          <%= image_tag uploaded_image.image, alt: t('uploaded_images.show_image'), class: "w-full h-full object-cover rounded-lg" %>
+        </div>
+        <p class="text-center mt-4">
+          <%= link_to t('uploaded_images.show_image'), uploaded_image_path(id: uploaded_image.id), class: "text-blue-500 hover:underline" %>
+        </p>
+      </div>
+    <% else %>
+      <div class="border rounded-lg p-4 shadow-lg bg-gray-100 text-center">
+        <p class="text-red-500"><%= t('uploaded_images.no_image_available') %></p>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
+<!-- Link to upload new images -->
+<div class="text-center mt-8">
+  <%= link_to t('uploaded_images.new_image_button'), new_uploaded_image_path, class: "bg-blue-500 text-white px-6 py-3 rounded-full hover:bg-blue-600" %>
+</div>
+
+<!-- Language Switcher -->
+<div class="text-center mt-8">
+  <%= link_to t('locale.english'), url_for(locale: 'en'), class: "text-blue-500 hover:underline" %> | 
+  <%= link_to t('locale.spanish'), url_for(locale: 'es'), class: "text-blue-500 hover:underline" %>
+</div>

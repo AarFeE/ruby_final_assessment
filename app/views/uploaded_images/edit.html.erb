@@ -1,0 +1,12 @@
+<% content_for :title, "Editing uploaded image" %>
+
+<h1>Editing uploaded image</h1>
+
+<%= render "form", uploaded_image: @uploaded_image %>
+
+<br>
+
+<div>
+  <%= link_to "Show this uploaded image", @uploaded_image %> |
+  <%= link_to "Back to uploaded images", uploaded_images_path %>
+</div>

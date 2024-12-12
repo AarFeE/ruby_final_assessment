@@ -1,0 +1,11 @@
+es:
+  uploaded_images:
+    title: "Imágenes Cargadas"
+    no_image_available: "El registro está incompleto o falta una imagen"
+    show_image: "Ver esta imagen cargada"
+    new_image_button: "Nueva imagen cargada"
+    uploaded_image_success: "La imagen se cargó con éxito."
+    create_button: "Cargar Imagen"
+  locale:
+    english: "Inglés"
+    spanish: "Español"

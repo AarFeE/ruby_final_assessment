@@ -1,0 +1,28 @@
+<p class="text-green-500 mb-4"><%= notice %></p>
+
+<!-- Outer container to fill screen height and center content -->
+<div class="min-h-screen block justify-center align-center items-center bg-gray-100">
+  <div class="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-lg">
+    <!-- Title -->
+    <h1 class="text-3xl font-semibold text-center mb-10"><%= t('uploaded_images.title') %></h1>
+
+    <!-- Display the uploaded image -->
+    <% if @uploaded_image.image.attached? %>
+      <div class="w-full mx-auto mb-6">
+        <%= image_tag @uploaded_image.image, alt: t('uploaded_images.show_image'), class: "mx-auto w-auto h-96 rounded-lg shadow-md" %>
+      </div>
+    <% else %>
+      <p class="text-red-500 text-center"><%= t('uploaded_images.no_image_available') %></p>
+    <% end %>
+
+    <!-- Back to uploaded images button -->
+    <%= link_to t('uploaded_images.show_image'), uploaded_images_path, class: "w-full text-center text-blue-500 hover:underline mt-4 block" %> 
+  </div>
+
+
+  <!-- Language Switcher -->
+  <div class="text-center mt-8">
+    <%= link_to t('locale.english'), url_for(locale: 'en'), class: "text-blue-500 hover:underline" %> | 
+    <%= link_to t('locale.spanish'), url_for(locale: 'es'), class: "text-blue-500 hover:underline" %>
+  </div>
+</div>
